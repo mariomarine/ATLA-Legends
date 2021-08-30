@@ -1,1 +1,1 @@
-web: gunicorn atla_rpg.wsgi
+web: gunicorn atla.wsgi
