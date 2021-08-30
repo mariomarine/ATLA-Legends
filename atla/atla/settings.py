@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'core',
     'api',
     'charsheet.apps.CharsheetConfig',
+    'campaign',
     'django.contrib.auth',
     'rest_framework',
     'django.contrib.contenttypes',

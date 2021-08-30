@@ -1,6 +1,7 @@
 from django.db import models
 from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES
 from core.models import User
+from campaign.models import Campaign
 
 def get_readable_playbook(playbook_choice):
     return [playbook_pair[1] for playbook_pair in PLAYBOOK_CHOICES if playbook_pair[0] == playbook_choice][0]
@@ -8,6 +9,11 @@ def get_readable_playbook(playbook_choice):
 class Character(models.Model):
     id = models.AutoField(primary_key=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    campaign = models.ForeignKey(
+        Campaign,
+        on_delete=models.SET_NULL,
+        null=True,
+    )
     playbook = models.CharField(
         max_length=15,
         choices=PLAYBOOK_CHOICES
@@ -26,12 +32,12 @@ class Character(models.Model):
     harmony = models.IntegerField(null=True)
     passion = models.IntegerField(null=True)
 
-    def _str_(self):
+    def __str__(self):
         playbook_full = get_readable_playbook(self.playbook)
         return self.name + ', ' + playbook_full
 
     def full_name(self):
-        return self._str_()
+        return self.__str__()
 
     def to_dict(self):
         return {
