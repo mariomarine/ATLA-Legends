@@ -117,6 +117,7 @@ const NewCharacter = function(props) {
         }
       </select>
       <br />
+      <br />
       <div>
         <label htmlFor="statBonus">Stat Bonus:</label>
         <select id="statBonus"
