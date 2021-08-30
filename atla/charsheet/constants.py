@@ -35,11 +35,16 @@ TRAINING_CHOICES = [
     ('Weapons', 'Weapons'),
     ('Technology', 'Technology'),
 ]
-PLUS_ONE = 1
-ZERO = 0
-MINUS_ONE = -1
 
 CREATIVITY = 'Creativity'
 FOCUS = 'Focus'
 HARMONY = 'Harmony'
 PASSION = 'Passion'
+
+CONDITIONS = [
+    ('Afraid', 'Afraid'),
+    ('Angry', 'Angry'),
+    ('Foolish', 'Foolish'),
+    ('Guilty', 'Guilty'),
+    ('Insecure', 'Insecure'),
+]
