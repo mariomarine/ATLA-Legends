@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <h1>My Characters</h1>
+  <div id="root"></div>
+  <script>
+    window.react_mount = document.getElementById('root');
+  </script>
+  {{ characters|json_script:'characters' }}
+  <script src="{% static 'characters-bundle.js' %}"></script>
+{% endblock %}

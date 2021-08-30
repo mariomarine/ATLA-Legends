@@ -1,0 +1,20 @@
+<ul>
+    {% if user.is_authenticated %}
+    <li>
+        <a href="{% url 'logout' %}">logout</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="login/">login</a>
+    </li>
+    {% endif %}
+    <li>
+        <a href="/charsheet/my-characters">My Characters</a>
+    </li>
+    <li>
+        <a href="/charsheet/new-character">New Character</a>
+    </li>
+    <li>
+        <a href="/admin/">Admin</a>
+    </li>
+</ul>

@@ -1,0 +1,12 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>ATLA: Legends RPG</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+  </head>
+  <body>
+      {% include "navbar.html" %}
+      {% block content %}{% endblock %}
+  </body>
+</html>

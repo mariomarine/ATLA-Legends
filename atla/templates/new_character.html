@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div id="root"></div>
+  <script>
+    window.react_mount = document.getElementById('root');
+  </script>
+  {% include "load_json.html" %}
+  {% csrf_token %}
+  <script>
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  </script>
+  <script src="{% static 'new_character-bundle.js' %}"></script>
+{% endblock %}
