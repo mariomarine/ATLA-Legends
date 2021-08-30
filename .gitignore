@@ -136,3 +136,4 @@ yarn.lock
 # personal
 *-bundle.js
 static/
+*.pem
