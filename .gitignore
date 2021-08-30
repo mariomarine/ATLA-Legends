@@ -132,7 +132,3 @@ yarn-error.log*
 /.changelog
 .npm/
 yarn.lock
-
-# personal
-*-bundle.js
-static/
