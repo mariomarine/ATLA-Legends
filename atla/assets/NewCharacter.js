@@ -123,17 +123,10 @@ const NewCharacter = function(props) {
                 name="statBonus"
                 onChange={e => {
                   setStatBonus(e.target.value);
-                  let playbook_value = playbook_stats[playbook][e.target.value];
-                  switch (e.target.value) {
-                    case 'Creativity':
-                      setCreativity(playbook_value + 1)
-                    case 'Focus':
-                      setCreativity(playbook_value + 1)
-                    case 'Harmony':
-                      setCreativity(playbook_value + 1)
-                    case 'Passion':
-                      setCreativity(playbook_value + 1)
-                  }
+                  setCreativity(playbook_stats[playbook]['Creativity'] + (e.target.value == 'Creativity' ? 1 : 0) );
+                  setFocus(playbook_stats[playbook]['Focus'] + (e.target.value == 'Focus' ? 1 : 0) );
+                  setHarmony(playbook_stats[playbook]['Harmony'] + (e.target.value == 'Harmony' ? 1 : 0) );
+                  setPassion(playbook_stats[playbook]['Passion'] + (e.target.value == 'Passion' ? 1 : 0) );
                 }}
                 value={statBonus}
         >
