@@ -55,8 +55,9 @@ const NewCharacter = function(props) {
     let api_url = get_host() + '/api/character/';
     postData(api_url, data)
       .then(res => {
-        console.log(res);
+        window.location.replace(get_base_url() + '/' + res['id']);
       });
+    
   }
 
   const url = get_base_url();
@@ -78,6 +79,7 @@ const NewCharacter = function(props) {
               }}
               value={playbook}
       >
+        <option selected="selected" disabled></option>
         {
           playbook_choices.map((playbook_pair) => {
             return (
@@ -90,6 +92,7 @@ const NewCharacter = function(props) {
       <br />
       <label htmlFor="demeanor">Demeanor:</label>
       <select id="demeanor" name="demeanor" onChange={e => setDemeanor(e.target.value)} value={demeanor}>
+        <option selected="selected" disabled></option>
         {
           demeanor_choices.map((demeanor_pair) => {
             return (
@@ -102,6 +105,7 @@ const NewCharacter = function(props) {
       <br />
       <label htmlFor="training">Training:</label>
       <select id="training" name="training" onChange={e => setTraining(e.target.value)} value={training}>
+        <option selected="selected" disabled></option>
         {
           training_choices.map((training_pair) => {
             return (
