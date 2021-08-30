@@ -31,6 +31,7 @@ const NewCharacter = function(props) {
   const playbook_choices = JSON.parse(document.getElementById('playbook_choices').textContent);
   const demeanor_choices = JSON.parse(document.getElementById('demeanor_choices').textContent);
   const training_choices = JSON.parse(document.getElementById('training_choices').textContent);
+  const stat_choices = ['Creativity', 'Focus', 'Harmony', 'Passion']
   let [charName, setCharName] = useState();
   let [playbook, setPlaybook] = useState();
   let [demeanor, setDemeanor] = useState();
@@ -39,6 +40,7 @@ const NewCharacter = function(props) {
   let [focus, setFocus] = useState();
   let [harmony, setHarmony] = useState();
   let [passion, setPassion] = useState();
+  let [statBonus, setStatBonus] = useState();
 
   const submitCharacter = (e) => {
     e.preventDefault();
@@ -72,10 +74,10 @@ const NewCharacter = function(props) {
               name="playbook"
               onChange={e => {
                 setPlaybook(e.target.value);
-                setCreativity(playbook_stats[e.target.value]['Creativity']);
-                setFocus(playbook_stats[e.target.value]['Focus']);
-                setHarmony(playbook_stats[e.target.value]['Harmony']);
-                setPassion(playbook_stats[e.target.value]['Passion']);
+                setCreativity(playbook_stats[e.target.value]['Creativity'] + (statBonus == 'Creativity' ? 1 : 0) );
+                setFocus(playbook_stats[e.target.value]['Focus'] + (statBonus == 'Focus' ? 1 : 0) );
+                setHarmony(playbook_stats[e.target.value]['Harmony'] + (statBonus == 'Harmony' ? 1 : 0) );
+                setPassion(playbook_stats[e.target.value]['Passion'] + (statBonus == 'Passion' ? 1 : 0) );
               }}
               value={playbook}
       >
@@ -115,7 +117,36 @@ const NewCharacter = function(props) {
         }
       </select>
       <br />
-      <br />
+      <div>
+        <label htmlFor="statBonus">Stat Bonus:</label>
+        <select id="statBonus"
+                name="statBonus"
+                onChange={e => {
+                  setStatBonus(e.target.value);
+                  let playbook_value = playbook_stats[playbook][e.target.value];
+                  switch (e.target.value) {
+                    case 'Creativity':
+                      setCreativity(playbook_value + 1)
+                    case 'Focus':
+                      setCreativity(playbook_value + 1)
+                    case 'Harmony':
+                      setCreativity(playbook_value + 1)
+                    case 'Passion':
+                      setCreativity(playbook_value + 1)
+                  }
+                }}
+                value={statBonus}
+        >
+          <option selected="selected" disabled></option>
+          {
+            stat_choices.map((bonus) => {
+              return (
+                <option value={bonus} key={bonus}>{bonus}</option>
+              )
+            })
+          }
+        </select>
+      </div>
       <label htmlFor="creativity">Creativity</label>
       <input type="number" name="creativity" readOnly value={creativity} />
       <br />
