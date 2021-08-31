@@ -120,7 +120,6 @@ GitHub.sublime-settings
 .idea/
 .vscode/
 node_modules/
-build
 .DS_Store
 *.tgz
 my-app*
