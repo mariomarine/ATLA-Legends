@@ -13,6 +13,15 @@ PLAYBOOK_CHOICES = [
     (SUCCESSOR, 'The Successor')
 ]
 
+BALANCE_PAIRS = {
+    BOLD: ('Loyalty', 'Confidence'),
+    GUARDIAN: ('Self-Reliance', 'Trust'),
+    HAMMER: ('Care', 'Force'),
+    ICON: ('Role', 'Freedom'),
+    IDEALIST: ('Forgiveness', 'Action'),
+    SUCCESSOR: ('Tradition', 'Progress'),
+}
+
 DEMEANOR_CHOICES = [
     ('Military', 'Military'),
     ('Monastic', 'Monastic'),

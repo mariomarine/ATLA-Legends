@@ -1,5 +1,5 @@
 from django.db import models
-from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES, CONDITIONS
+from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES, BALANCE_PAIRS
 from django.conf import settings
 from campaign.models import Campaign
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -71,6 +71,12 @@ class Character(models.Model):
 
     def full_name(self):
         return self.__str__()
+    
+    def balance_high(self):
+        return BALANCE_PAIRS[self.playbook][1]
+
+    def balance_low(self):
+        return BALANCE_PAIRS[self.playbook][0]
 
     def to_dict(self):
         return {
@@ -83,4 +89,13 @@ class Character(models.Model):
             'focus': self.focus,
             'harmony': self.harmony,
             'passion': self.passion,
+            'fatigue': self.fatigue,
+            'balance': self.balance,
+            'balance_high': self.balance_high(),
+            'balance_low': self.balance_low(),
+            'afraid': self.afraid,
+            'angry': self.angry,
+            'foolish': self.foolish,
+            'guilty': self.guilty,
+            'insecure': self.insecure,
         }
