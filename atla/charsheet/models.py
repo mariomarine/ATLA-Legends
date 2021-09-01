@@ -1,6 +1,6 @@
 from django.db import models
 from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES, CONDITIONS
-from core.models import User
+from django.conf import settings
 from campaign.models import Campaign
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -9,7 +9,7 @@ def get_readable_playbook(playbook_choice):
 
 class Character(models.Model):
     id = models.AutoField(primary_key=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     campaign = models.ForeignKey(
         Campaign,
         on_delete=models.SET_NULL,

@@ -8,7 +8,7 @@ urlpatterns = [
     path('charsheet/', include('charsheet.urls')),
     path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
-    path('', include('django.contrib.auth.urls')),
+    path('account/', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('signup/', views.signup, name='signup'),
+    path('account/', include('core.urls')),
 ]

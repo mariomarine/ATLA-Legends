@@ -1,10 +1,10 @@
 from django.db import models
 from .constants import ERA_CHOICES
-from core.models import User
+from django.conf import settings
 
 class Campaign(models.Model):
     id = models.AutoField(primary_key=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(
         max_length=255,
     )
