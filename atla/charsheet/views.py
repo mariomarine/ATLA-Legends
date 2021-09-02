@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from charsheet.constants import PLAYBOOK_CHOICES, TRAINING_CHOICES, DEMEANOR_CHOICES
+from charsheet.constants import PLAYBOOK_CHOICES, TRAINING_CHOICES, DEMEANOR_CHOICES, BACKGROUND_CHOICES
 from .models import Character
 from django.contrib.auth.decorators import login_required
 
@@ -15,6 +15,7 @@ def charsheet(request, character_id=1):
     context = {
         'character': character.to_dict(),
         'playbook_choices': PLAYBOOK_CHOICES,
+        'background_choices': BACKGROUND_CHOICES,
         'demeanor_choices': DEMEANOR_CHOICES,
         'training_choices': TRAINING_CHOICES,
     }
@@ -38,6 +39,7 @@ def newCharacter(request):
     context = {
         'playbook_choices': PLAYBOOK_CHOICES,
         'demeanor_choices': DEMEANOR_CHOICES,
+        'background_choices': BACKGROUND_CHOICES,
         'training_choices': TRAINING_CHOICES,
     }
     return render(request, template_name, context)

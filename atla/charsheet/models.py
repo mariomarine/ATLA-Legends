@@ -1,5 +1,5 @@
 from django.db import models
-from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES, BALANCE_PAIRS
+from charsheet.constants import PLAYBOOK_CHOICES, DEMEANOR_CHOICES, TRAINING_CHOICES, BALANCE_PAIRS, BACKGROUND_CHOICES
 from django.conf import settings
 from campaign.models import Campaign
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -23,7 +23,11 @@ class Character(models.Model):
     name = models.CharField(max_length=100)
     demeanor = models.CharField(
         max_length=15,
-        choices=DEMEANOR_CHOICES
+        choices=DEMEANOR_CHOICES,
+    )
+    background = models.CharField(
+        max_length=15,
+        choices=BACKGROUND_CHOICES,
     )
     training = models.CharField(
         max_length=15,

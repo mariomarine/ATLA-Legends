@@ -30,10 +30,12 @@ const get_host = () => {
 const NewCharacter = function(props) {
   const playbook_choices = JSON.parse(document.getElementById('playbook_choices').textContent);
   const demeanor_choices = JSON.parse(document.getElementById('demeanor_choices').textContent);
+  const background_choices = JSON.parse(document.getElementById('background_choices').textContent);
   const training_choices = JSON.parse(document.getElementById('training_choices').textContent);
   const stat_choices = ['Creativity', 'Focus', 'Harmony', 'Passion']
   let [charName, setCharName] = useState();
   let [playbook, setPlaybook] = useState();
+  let [background, setBackground] = useState();
   let [demeanor, setDemeanor] = useState();
   let [training, setTraining] = useState();
   let [creativity, setCreativity] = useState();
@@ -47,6 +49,7 @@ const NewCharacter = function(props) {
     let data = {
       "name": charName,
       "playbook": playbook,
+      "background": background,
       "demeanor": demeanor,
       "training": training,
       "creativity": creativity,
@@ -86,6 +89,19 @@ const NewCharacter = function(props) {
           playbook_choices.map((playbook_pair) => {
             return (
               <option value={playbook_pair[1]} key={playbook_pair[0]}>{playbook_pair[1]}</option>
+            )
+          })
+        }
+      </select>
+      <br />
+      <br />
+      <label htmlFor="background">Background:</label>
+      <select id="background" name="background" onChange={e => setBackground(e.target.value)} value={background}>
+        <option selected="selected" disabled></option>
+        {
+          background_choices.map((background_pair) => {
+            return (
+              <option value={background_pair[1]} key={background_pair[0]}>{background_pair[1]}</option>
             )
           })
         }

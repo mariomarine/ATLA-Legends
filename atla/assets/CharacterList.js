@@ -17,7 +17,7 @@ const Charsheet = function(props) {
           return (
             <li key={character.id}>
               <a href={url + '/' + character.id}>
-                {character.name} - {character.training} - {character.demeanor}
+                {character.name} - {character.training} - {character.background} - {character.demeanor}
               </a>
             </li>
           )

@@ -23,18 +23,20 @@ BALANCE_PAIRS = {
 }
 
 DEMEANOR_CHOICES = [
-    ('Military', 'Military'),
-    ('Monastic', 'Monastic'),
-    ('Outlaw', 'Outlaw'),
-    ('Privileged', 'Privileged'),
-    ('Urban', 'Urban'),
-    ('Wilderness', 'Wilderness'),
     ('Impatient', 'Impatient'),
     ('Sensitive', 'Sensitive'),
     ('Affable', 'Affable'),
     ('Enthusiastic', 'Enthusiastic'),
     ('Talkative', 'Talkative'),
     ('Impetuous', 'Impetuous')
+]
+BACKGROUND_CHOICES = [
+    ('Military', 'Military'),
+    ('Monastic', 'Monastic'),
+    ('Outlaw', 'Outlaw'),
+    ('Privileged', 'Privileged'),
+    ('Urban', 'Urban'),
+    ('Wilderness', 'Wilderness'),
 ]
 TRAINING_CHOICES = [
     ('Waterbending', 'Waterbending'),

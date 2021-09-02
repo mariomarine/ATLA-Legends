@@ -21,8 +21,12 @@ const Charsheet = function(props) {
         <span id="playbook">{character.playbook}</span>
       </div>
       <div>
+        <b><label htmlFor="background">Background: </label></b>
+        <span id="background">{character.background}</span>
+      </div>
+      <div>
         <b><label htmlFor="demeanor">Demeanor: </label></b>
-        <span id="playbook">{character.demeanor}</span>
+        <span id="demeanor">{character.demeanor}</span>
       </div>
       <div>
         <b><label htmlFor="training">Training: </label></b> 

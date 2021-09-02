@@ -6,6 +6,7 @@ class CharacterAdmin(admin.ModelAdmin):
     fields = ('name',
               'playbook',
               'demeanor',
+              'background',
               'training',
               ('creativity', 'focus', 'harmony', 'passion'),
               'fatigue',
@@ -13,4 +14,4 @@ class CharacterAdmin(admin.ModelAdmin):
               ('afraid', 'angry', 'foolish', 'guilty', 'insecure'),
               'owner',
               'campaign')
-    list_display = ('full_name', 'demeanor', 'training', 'owner', 'campaign')
+    list_display = ('full_name', 'background', 'demeanor', 'training', 'owner', 'campaign')
