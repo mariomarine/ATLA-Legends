@@ -68,24 +68,41 @@ class Character(models.Model):
     foolish = models.BooleanField(default=False)
     guilty = models.BooleanField(default=False)
     insecure = models.BooleanField(default=False)
+    notes = models.TextField(
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
-        playbook_full = get_readable_playbook(self.playbook)
-        return self.name + ', ' + playbook_full
+        try:
+            playbook_full = get_readable_playbook(self.playbook)
+            return self.name + ', ' + playbook_full
+        except:
+            return ''
 
     def full_name(self):
         return self.__str__()
     
     def balance_high(self):
-        return BALANCE_PAIRS[self.playbook][1]
+        try:
+            return BALANCE_PAIRS[self.playbook][1]
+        except:
+            return ''
 
     def balance_low(self):
-        return BALANCE_PAIRS[self.playbook][0]
+        try:
+            return BALANCE_PAIRS[self.playbook][0]
+        except:
+            return ''
 
     def to_dict(self):
+        try:
+            playbook = get_readable_playbook(self.playbook)
+        except:
+            playbook = ''
         return {
             'id': self.id,
-            'playbook': get_readable_playbook(self.playbook),
+            'playbook': playbook,
             'name': self.name,
             'demeanor': self.demeanor,
             'training': self.training,
@@ -102,4 +119,5 @@ class Character(models.Model):
             'foolish': self.foolish,
             'guilty': self.guilty,
             'insecure': self.insecure,
+            'notes': self.notes,
         }

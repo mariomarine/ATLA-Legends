@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
+import 'regenerator-runtime/runtime';
 
 const character = JSON.parse(document.getElementById('character').textContent);
+const get_host = () => {
+  let host = window.location.host;
+  return 'http://' + host;
+}
+
+async function patchNotes(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    },
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+let api_url = get_host() + '/api/update-character-notes/';
 
 const Charsheet = function(props) {
   let [fatigue, setFatigue] = useState(character.fatigue);
@@ -10,6 +30,16 @@ const Charsheet = function(props) {
   let [foolish, setFoolish] = useState(character.foolish);
   let [guilty, setGuilty] = useState(character.guilty);
   let [insecure, setInsecure] = useState(character.insecure);
+  let [notes, setNotes] = useState(character.notes);
+  let [saved_confirmation, setSavedConfirmation] = useState();
+
+  let submitNotes = () => {
+    setSavedConfirmation("");
+    patchNotes(api_url, {'notes': notes, 'id': character.id})
+      .then(res => {
+        setSavedConfirmation("Saved");
+      });
+  }
 
   return (
     <div>
@@ -82,6 +112,12 @@ const Charsheet = function(props) {
       <div>
         <b><label htmlFor="insecure">Insecure: </label></b>
         <input id="insecure" type="checkbox" checked={insecure} onChange={e => setInsecure(e.target.checked)} />
+      </div>
+      <div>
+        <b><label htmlFor="notes">Notes: </label></b>
+        <textarea id="notes" name="notes" value={notes} onChange={e => setNotes(e.target.value)} />
+        <button onClick={submitNotes}>Save Notes</button>
+        <span>{saved_confirmation}</span>
       </div>
         
     </div>

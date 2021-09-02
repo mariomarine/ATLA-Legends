@@ -13,5 +13,6 @@ class CharacterAdmin(admin.ModelAdmin):
               'balance',
               ('afraid', 'angry', 'foolish', 'guilty', 'insecure'),
               'owner',
-              'campaign')
+              'campaign',
+              'notes')
     list_display = ('full_name', 'background', 'demeanor', 'training', 'owner', 'campaign')

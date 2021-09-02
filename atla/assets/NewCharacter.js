@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import { playbook_stats } from './constants';
 
 async function postData(url = '', data = {}) {
