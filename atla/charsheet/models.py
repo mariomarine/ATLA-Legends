@@ -104,6 +104,7 @@ class Character(models.Model):
             'id': self.id,
             'playbook': playbook,
             'name': self.name,
+            'background': self.background,
             'demeanor': self.demeanor,
             'training': self.training,
             'creativity': self.creativity,
